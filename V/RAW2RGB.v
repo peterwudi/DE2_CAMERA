@@ -112,15 +112,15 @@ begin
 		end
 		else if({iY_Cont[0],iX_Cont[0]}==2'b00)
 		begin
-			mCCD_R	<=	mDATAd_0;
-			mCCD_G	<=	mDATA_0+mDATAd_1;
-			mCCD_B	<=	mDATA_1;
+			mCCD_R	<=	mDATAd_1;
+			mCCD_G	<=	mDATA_1+mDATAd_0;
+			mCCD_B	<=	mDATA_0;
 		end
 		else if({iY_Cont[0],iX_Cont[0]}==2'b01)
 		begin
-			mCCD_R	<=	mDATA_0;
-			mCCD_G	<=	mDATAd_0+mDATA_1;
-			mCCD_B	<=	mDATAd_1;
+			mCCD_R	<=	mDATA_1;
+			mCCD_G	<=	mDATA_0+mDATAd_1;
+			mCCD_B	<=	mDATAd_0;
 		end
 	end
 end
