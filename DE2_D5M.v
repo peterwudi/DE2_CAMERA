@@ -66,9 +66,7 @@ module DE2_D5M
 		////////////////////////	UART	////////////////////////
 		UART_TXD,						//	UART Transmitter
 		UART_RXD,						//	UART Receiver
-		////////////////////////	IRDA	////////////////////////
-		IRDA_TXD,						//	IRDA Transmitter
-		IRDA_RXD,						//	IRDA Receiver
+
 		/////////////////////	SDRAM Interface		////////////////
 		DRAM_DQ,						//	SDRAM Data bus 16 Bits
 		DRAM_ADDR,						//	SDRAM Address bus 12 Bits
@@ -82,6 +80,8 @@ module DE2_D5M
 		DRAM_BA_1,						//	SDRAM Bank Address 0
 		DRAM_CLK,						//	SDRAM Clock
 		DRAM_CKE,						//	SDRAM Clock Enable
+		////////////////////	Flash Interface		////////////////
+		FL_DQ,							//	FLASH Data bus 8 Bits
 
 		////////////////////	I2C		////////////////////////////
 		I2C_SDAT,						//	I2C Data
@@ -124,9 +124,7 @@ output	[17:0]	LEDR;					//	LED Red[17:0]
 ////////////////////////////	UART	////////////////////////////
 output			UART_TXD;				//	UART Transmitter
 input			UART_RXD;				//	UART Receiver
-////////////////////////////	IRDA	////////////////////////////
-output			IRDA_TXD;				//	IRDA Transmitter
-input			IRDA_RXD;				//	IRDA Receiver
+
 ///////////////////////		SDRAM Interface	////////////////////////
 inout	[15:0]	DRAM_DQ;				//	SDRAM Data bus 16 Bits
 output	[11:0]	DRAM_ADDR;				//	SDRAM Address bus 12 Bits
@@ -140,6 +138,8 @@ output			DRAM_BA_0;				//	SDRAM Bank Address 0
 output			DRAM_BA_1;				//	SDRAM Bank Address 0
 output			DRAM_CLK;				//	SDRAM Clock
 output			DRAM_CKE;				//	SDRAM Clock Enable
+////////////////////////	Flash Interface	////////////////////////
+inout	[7:0]	FL_DQ;					//	FLASH Data bus 8 Bits
 
 ////////////////////////	I2C		////////////////////////////////
 inout			I2C_SDAT;				//	I2C Data
