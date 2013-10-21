@@ -38,6 +38,7 @@
 // --------------------------------------------------------------------
 //   Ver  :| Author            :| Mod. Date :| Changes Made:
 //   V1.0 :| Johnny FAN        :| 07/07/09  :| Initial Revision
+//   V1.1 :| Dee               :| 03/08/11  :| Update to Q10.1SP1 
 // --------------------------------------------------------------------
 
 module DE2_D5M
@@ -62,7 +63,12 @@ module DE2_D5M
 		////////////////////////	LED		////////////////////////
 		LEDG,							//	LED Green[8:0]
 		LEDR,							//	LED Red[17:0]
-
+		////////////////////////	UART	////////////////////////
+		UART_TXD,						//	UART Transmitter
+		UART_RXD,						//	UART Receiver
+		////////////////////////	IRDA	////////////////////////
+		IRDA_TXD,						//	IRDA Transmitter
+		IRDA_RXD,						//	IRDA Receiver
 		/////////////////////	SDRAM Interface		////////////////
 		DRAM_DQ,						//	SDRAM Data bus 16 Bits
 		DRAM_ADDR,						//	SDRAM Address bus 12 Bits
@@ -115,7 +121,12 @@ output	[6:0]	HEX7;					//	Seven Segment Digit 7
 ////////////////////////////	LED		////////////////////////////
 output	[8:0]	LEDG;					//	LED Green[8:0]
 output	[17:0]	LEDR;					//	LED Red[17:0]
-
+////////////////////////////	UART	////////////////////////////
+output			UART_TXD;				//	UART Transmitter
+input			UART_RXD;				//	UART Receiver
+////////////////////////////	IRDA	////////////////////////////
+output			IRDA_TXD;				//	IRDA Transmitter
+input			IRDA_RXD;				//	IRDA Receiver
 ///////////////////////		SDRAM Interface	////////////////////////
 inout	[15:0]	DRAM_DQ;				//	SDRAM Data bus 16 Bits
 output	[11:0]	DRAM_ADDR;				//	SDRAM Address bus 12 Bits
@@ -133,6 +144,7 @@ output			DRAM_CKE;				//	SDRAM Clock Enable
 ////////////////////////	I2C		////////////////////////////////
 inout			I2C_SDAT;				//	I2C Data
 output			I2C_SCLK;				//	I2C Clock
+
 ////////////////////////	VGA			////////////////////////////
 output			VGA_CLK;   				//	VGA Clock
 output			VGA_HS;					//	VGA H_SYNC
@@ -344,10 +356,11 @@ Sdram_Control_4Port	u7	(	//	HOST Side
         					.CAS_N(DRAM_CAS_N),
         					.WE_N(DRAM_WE_N),
         					.DQ(DRAM_DQ),
-							.DQM({DRAM_UDQM,DRAM_LDQM})
+        					.DQM({DRAM_UDQM,DRAM_LDQM})
 						);
 
 
+assign	UART_TXD = UART_RXD;
 
 I2C_CCD_Config 		u8	(	//	Host Side
 							.iCLK(CLOCK_50),
